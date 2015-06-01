@@ -20,7 +20,7 @@ if(Meteor.isClient){
     Template.leaderboard.events({
         'click .player': function(){
             var playerId = this._id;
-            Session.set('selectedPlayer', playerId);
+            Session.set('selectedPlayer', playerId); // sets 'selectedPlayer' session to selected player primary key
         },
         'click .increment': function(){
             var selectedPlayer = Session.get('selectedPlayer');
@@ -29,6 +29,20 @@ if(Meteor.isClient){
         'click .decrement': function(){
             var selectedPlayer = Session.get('selectedPlayer');
             PlayersList.update(selectedPlayer, {$inc: {score: -5} });
+        },
+        'click .remove': function(){
+            var selectedPlayer = Session.get('selectedPlayer');
+            PlayersList.remove(selectedPlayer);
+        }
+    });
+    Template.addPlayerForm.events({
+        'submit form': function(){
+            event.preventDefault();
+            var playerNameVar = event.target.playerName.value;
+            PlayersList.insert({
+                name: playerNameVar,
+                score: 0
+            });
         }
     });
 }
