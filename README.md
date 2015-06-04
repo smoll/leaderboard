@@ -1,4 +1,4 @@
-# Leaderboard
+# Leaderboard [![Circle CI](https://circleci.com/gh/smoll/leaderboard.svg?style=svg)](https://circleci.com/gh/smoll/leaderboard)
 
 Following along with [this tutorial](http://meteortips.com/first-meteor-tutorial/).
 
