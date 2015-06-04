@@ -35,7 +35,7 @@ if(Meteor.isClient){
         },
         'click .remove': function(){
             var selectedPlayer = Session.get('selectedPlayer');
-            PlayersList.remove(selectedPlayer);
+            Meteor.call('removePlayerData', selectedPlayer);
         }
     });
     Template.addPlayerForm.events({
@@ -61,9 +61,10 @@ if(Meteor.isServer){
                 score: 0,
                 createdBy: currentUserId
             });
-        }
-        'removePlayerData': function(){
-            // code goes here
+        },
+        'removePlayerData': function(selectedPlayer){
+            var currentUserId = Meteor.userId();
+            PlayersList.remove({_id: selectedPlayer, createdBy: currentUserId});
         }
     });
 
