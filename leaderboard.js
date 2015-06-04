@@ -68,7 +68,8 @@ if(Meteor.isServer){
         },
         'modifyScore': function(selectedPlayer, amount){
             var currentUserId = Meteor.userId();
-            PlayersList.update(selectedPlayer, {$inc: {score: amount} });
+            PlayersList.update({_id: selectedPlayer, createdBy: currentUserId},
+                               {$inc: {score: amount} });
         }
     });
 
