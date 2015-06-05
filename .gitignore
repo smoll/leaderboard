@@ -27,6 +27,4 @@ build/Release
 node_modules
 
 # Test results
-/tests/nightwatch/reports
-/tests/nightwatch/screenshots
 /tests/cucumber/.screenshots

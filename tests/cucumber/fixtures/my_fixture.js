@@ -5,10 +5,10 @@
   Meteor.methods({
     'reset' : function() {
         PlayersList.remove({}); // remove players
-        if(Meteor.users.find().count() === 0) {
+        if(typeof(Meteor.users.findOne({ "emails.address" : 'admin@admin.com' })) === "undefined") {
             Accounts.createUser({ // create test user
-                email: 'test',
-                password: 'changeme'
+                email: 'admin@admin.com',
+                password: 'admin123'
             });
         }
     }

@@ -5,6 +5,5 @@ Feature: Add/remove users
 
   @dev
   Scenario: Add player
-    When I navigate to "/"
-    And I add a new player
+    When I add a new player
     Then the new player should be visible
