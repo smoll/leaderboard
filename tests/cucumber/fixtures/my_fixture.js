@@ -4,9 +4,13 @@
 
   Meteor.methods({
     'reset' : function() {
-      // you can do some resetting of your app here
-      // fixture code will only execute inside mirrors neither runs
-      // inside the main app nor gets bundled to production.
+        PlayersList.remove({}); // remove players
+        if(Meteor.users.find().count() === 0) {
+            Accounts.createUser({ // create test user
+                email: 'test',
+                password: 'changeme'
+            });
+        }
     }
   });
 
