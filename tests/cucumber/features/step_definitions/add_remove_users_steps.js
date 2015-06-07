@@ -30,9 +30,12 @@
 
     this.Then(/^the new player should be visible$/, function (callback) {
       // not sure how to check for # of players to increment
-      this.client.getText('.player:last-child', function(err, text){
-        expect(text).to.startWith(someName)
-      }).call(callback);
+      this.client
+        .waitForExist('.player')
+        .getText('.player:last-child', function(err, text){
+          expect(text).to.startWith(someName)
+        })
+        .call(callback);
     });
 
   };
