@@ -32,10 +32,8 @@
       // not sure how to check for # of players to increment
       this.client
         .waitForExist('.player')
-        .getText('.player:last-child', function(err, text){
-          expect(text).to.startWith(someName)
-        })
-        .call(callback);
+        .getText('.player-name')
+        .should.become(someName).and.notify(callback);
     });
 
   };
